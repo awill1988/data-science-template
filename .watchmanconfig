@@ -1,0 +1,7 @@
+{
+  "root_files": [".watchmanconfig"],
+  "enforce_root_files": true,
+  "ignore_dirs": [".vscode", "scripts", "target"],
+  "illegal_fstypes": ["nfs", "cifs", "smb"],
+  "illegal_fstypes_advice": "use a local directory"
+}

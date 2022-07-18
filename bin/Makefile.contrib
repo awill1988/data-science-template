@@ -1,0 +1,12 @@
+NO_CONTRIB ?= 1
+
+.git/hooks/pre-commit:
+	@NO_CONTRIB=$(NO_CONTRIB) $(SHELL) bin/git-hooks-install
+
+pre-commit: .git/hooks/pre-commit
+
+pre-commit-run:
+	@NO_CONTRIB=$(NO_CONTRIB) $(SHELL) bin/git-hooks-run
+
+pre-commit-clean:
+	@rm -r .git/hooks/pre-commit

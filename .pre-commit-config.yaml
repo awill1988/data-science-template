@@ -1,0 +1,39 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.1.0
+    hooks:
+    -   id: check-byte-order-marker
+    -   id: check-case-conflict
+    -   id: check-merge-conflict
+    -   id: check-symlinks
+    -   id: check-yaml
+    -   id: mixed-line-ending
+    -   id: trailing-whitespace
+    -   id: forbid-new-submodules
+    -   id: check-added-large-files
+        args: ['--maxkb=2000']
+    -   id: forbid-new-submodules
+    -   id: mixed-line-ending
+        args: ['--fix=lf']
+        description: Forces to replace line ending by the UNIX 'lf' character.
+
+-   repo: https://github.com/pre-commit/pre-commit
+    rev: v2.5.1
+    hooks:
+    -   id: validate_manifest
+
+# this software will lint commit messages to promote predictable
+# software changes as described on https://www.conventionalcommits.org/en/v1.0.0/
+- repo: https://github.com/compilerla/conventional-pre-commit
+  rev: v1.3.0
+  hooks:
+  - id: conventional-pre-commit
+    stages: [commit-msg]
+    args: [] # optional: list of Conventional Commits types to allow
+
+- repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+  rev: ''  # pick a git hash / tag to point to
+  hooks:
+  - id: editorconfig-checker
+    alias: ec
+    exclude_types: ["jupyter"]

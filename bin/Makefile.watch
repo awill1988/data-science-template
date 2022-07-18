@@ -1,0 +1,7 @@
+.PHONY: watch-add
+watch-add:
+	@$(SHELL) bin/watch-add
+
+.PHONY: watch-del
+watch-del:
+	@$(SHELL) bin/watch-del

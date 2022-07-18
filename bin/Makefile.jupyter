@@ -1,0 +1,7 @@
+.PHONY: jupyter-setup
+jupyter-setup: build-python
+	$(PYENV)/bin/pip install -r requirements/jupyter.txt --exists-action i
+
+.PHONY: jupyter-notebook
+jupyter-notebook: build-python
+	@$(SHELL) bin/jupyter-notebook

@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# used to avoid requiring software that is required for code contributors.
+NO_CONTRIB=${NO_CONTRIB:-0}
+
+# helper to know where this script lives on the filesystem when it is run
+thisdir=$(cd "$(dirname "$0")"; pwd -P)
+
+# load helper bash functions and check for env prerequisites
+source "${thisdir}/../bin/rc"
+
+# don't continue when there's an unexpected error
+set -e
+
+# non-contributors do not need pre-commit
+[ "${NO_CONTRIB}" == "1" ] && \
+    echo "skipping pre-commit due to non-contributing mode" && \
+    exit 0
+
+# make sure pre-commit is installed
+type pre-commit >/dev/null || die "to contribute, please install the pre-commit software. See https://pre-commit.com/"
+
+#--------------------------------------------------------------------
+#                   git hooks (register)
+#--------------------------------------------------------------------
+#  pre-commit will now run on every commit. Every time you clone a
+#  project using pre-commit running pre-commit install should always
+#  be the first thing you do.
+#--------------------------------------------------------------------
+[ -f "${thisdir}/../.git/hooks/pre-commit" ] || pre-commit install
+
+exit 0;

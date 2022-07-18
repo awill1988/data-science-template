@@ -1,0 +1,21 @@
+- id: fmt
+  name: fmt
+  description: Format files using python toolchain.
+  entry: make
+  language: system
+  types: [python]
+  args: ["fmt-python"]
+- id: lint
+  name: lint
+  description: Lint python library code.
+  entry: make
+  language: system
+  types: [python]
+  args: ["lint-python"]
+- id: test
+  name: test
+  description: Test python library code.
+  entry: make
+  language: system
+  types: [python]
+  args: ["test-python"]

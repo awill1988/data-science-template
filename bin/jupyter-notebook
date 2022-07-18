@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# helper to know where this script lives on the filesystem when it is run
+thisdir=$(cd "$(dirname "$0")"; pwd -P)
+
+# load helper bash functions and check for env prerequisites
+source "${thisdir}/../bin/rc"
+
+# don't continue when there's an unexpected error
+set -e
+
+# determine the location of the venv
+pyenv=$(python3 -c "import sys; print('.venv' + '.'.join(str(x) for x in sys.version_info[:2]))")
+
+# will install jupyter if it wasn't already
+[ -f "${pyenv}/bin/jupyter" ] || "${pyenv}/bin/pip" install -r "${thisdir}/../requirements/jupyter.txt" --exists-action i
+
+#--------------------------------------------------------------------
+#                   jupyter notebook (start)
+#--------------------------------------------------------------------
+#  starts jupyter notebook in the project root notebooks directory.
+#--------------------------------------------------------------------
+cd "${thisdir}/../notebooks"
+
+"${thisdir}/../${pyenv}/bin/jupyter" notebook

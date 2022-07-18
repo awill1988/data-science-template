@@ -1,0 +1,26 @@
+.DS_Store
+*.dSYM
+*.egg-info
+dist
+build
+.mypy_cache/
+.coverage
+htmlcov/
+*.log
+__pycache__
+*.py[cod]
+.Python
+.venv*
+watchman.log
+.pytest_cache
+
+# vscode
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# for fuzzy testing
+src/tests/data/generated/*
+!**/.gitkeep
+
+notebooks/.ipynb_checkpoints
